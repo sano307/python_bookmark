@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+<!-- <title>Django Bookmark List</title> -->
+{% block title %}Django Bookmark List{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <h1>Bookmark List</h1>
+
+        <ul>
+            <!-- object_list 객체는 BookmarkLV 클래스형 뷰에서 넘겨주는 파라미터 -->
+            {% for bookmark in object_list %}
+                <!-- 템플릿 변수를 찍으면 자동으로 __str__ 메서드를 호출하여 결과를 출력 -->
+                <!-- % url % 태그는 URL 패턴에서 URL 문자열을 추출 -->
+                <li><a href="{% url 'bookmark:detail' bookmark.id %}">{{ bookmark }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
